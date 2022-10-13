@@ -37,13 +37,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    customLaunchers: {
-      chrome_without_security: {
-        base: 'Chrome',
-        flags: ['--disable-web-security'],
-        displayName: 'Chrome w/o security'
-      }
-    },
+    browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
   });
