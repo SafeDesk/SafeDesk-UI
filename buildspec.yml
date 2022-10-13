@@ -3,8 +3,11 @@ version : 0.2
 phases: 
   install:
     commands:
-    - curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
-    - apt install nodejs npm
+    - curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    - sudo apt-get install -y nodejs
+    - sudo apt update
+    - sudo apt install nodejs
+    - sudo apt install build-essential
   pre_build:
     commands:
     - npm install
