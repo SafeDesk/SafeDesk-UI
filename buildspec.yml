@@ -5,7 +5,7 @@ phases:
     commands:
     - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     - sudo apt-get install -y nodejs
-    - echo node -v
+    - node -v
     - sudo apt update
     - sudo apt install build-essential
     - sudo npm install -g @angular/cli
