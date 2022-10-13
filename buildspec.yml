@@ -3,7 +3,7 @@ version : 0.2
 phases: 
   install:
     commands:
-    - curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+    - curl -fsSL https://deb.nodesource.com/setup_14.x | bash - 
     - apt -y install nodejs
     - node -v
     # - sudo apt update
