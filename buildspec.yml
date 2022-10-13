@@ -1,0 +1,22 @@
+version : 0.2
+
+phases: 
+  install:
+    commands:
+    - curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+    - apt install nodejs npm
+  pre_build:
+    commands:
+    - npm install
+  
+  build:
+    commands:
+    - ng test
+    - ng build
+
+artifacts : 
+  files :
+    "**/*"
+  
+  discard-paths : no
+  base-directory : dist
