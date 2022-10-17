@@ -1,1 +1,14 @@
-<p>create-task works!</p>
+<mat-toolbar color="white">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>kitchen</mat-icon>
+  </button>
+  <span>Chores</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Add Chores
+  </button>
+</mat-toolbar>

@@ -15,10 +15,18 @@ import { TaskItemComponent } from './components/projects/tasks/task-item/task-it
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskItemDescriptionComponent } from './components/projects/tasks/task-item-description/task-item-description.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { FormComponent } from './components/create-task/form/form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     TaskItemComponent,
     TaskItemDescriptionComponent,
     CreateTaskComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,14 +51,18 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatDialogModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MatButtonModule,
-    MatDialogModule,
-    MatSlideToggleModule
-  ]
+  exports: [MatButtonModule, MatDialogModule, MatSlideToggleModule],
 })
-export class AppModule { }
+export class AppModule {}
