@@ -27,6 +27,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     TaskItemDescriptionComponent,
     CreateTaskComponent,
     FormComponent,
+SidebarComponent
+
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    FontAwesomeModule,
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],
