@@ -18,7 +18,7 @@ import { CreateTaskComponent } from './components/create-task/create-task.compon
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FormComponent } from './components/create-task/form/form.component';
@@ -45,8 +45,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TaskItemDescriptionComponent,
     CreateTaskComponent,
     FormComponent,
-SidebarComponent
-
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +62,8 @@ SidebarComponent
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],
