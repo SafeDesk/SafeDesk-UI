@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-task',
