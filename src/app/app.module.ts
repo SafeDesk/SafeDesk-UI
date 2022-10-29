@@ -64,6 +64,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatNativeDateModule,
     ReactiveFormsModule,
     FormsModule,
+    FontAwesomeModule,
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],

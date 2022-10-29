@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import axios from 'axios';
 
 @Component({
   selector: 'app-form',
@@ -20,8 +21,26 @@ export class FormComponent implements OnInit {
       description: ['', Validators.required],
     });
   }
-  public saveItem(): void {
-    this.listData.push(this.form.value);
-    this.form.reset();
+  async addChore() {
+    // const { data } = await axios.get("https://safedesk.herokuapp.com/api/v1/chores");
+    // console.log(data);
+    let data = this.form.value;
+    let postData = {
+      task_name: data.taskName,
+      points: data.points,
+      task_priority: data.taskPriority,
+      description: data.description,
+      date_completed: data.date,
+      parent_id: '',
+    };
+    if (this.form.valid) {
+      await axios.post(
+        'https://safedesk.herokuapp.com/api/v1/chores/',
+        postData
+      );
+      this.form.reset();
+    }
   }
+  // const { data } = await axios.get("https://safedesk.herokuapp.com/api/v1/chores");
+  // console.log(data);
 }
