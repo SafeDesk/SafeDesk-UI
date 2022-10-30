@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import axios from 'axios';
@@ -8,7 +9,13 @@ import axios from 'axios';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {}
+  minDate: Date;
+
+  constructor(private formBuilder: FormBuilder) {
+    const currentDay = new Date(Date.now());
+    this.minDate = currentDay;
+  }
+
   form!: FormGroup;
   listData: any;
   ngOnInit(): void {
@@ -21,6 +28,7 @@ export class FormComponent implements OnInit {
       description: ['', Validators.required],
     });
   }
+
   async addChore() {
     let data = this.form.value;
     let postData = {

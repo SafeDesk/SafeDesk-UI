@@ -16,7 +16,8 @@
         formControlName="points"
         matInput
         type="number"
-        placeholder="Enter Points"
+        min="0"
+        placeholder="Enter Points (Numerical Value)"
       />
     </mat-form-field>
 
@@ -39,6 +40,7 @@
       <input
         formControlName="date"
         matInput
+        [min]="minDate"
         [matDatepicker]="picker"
         placeholder="Pick a date"
       />
@@ -65,6 +67,7 @@
     mat-raised-button
     color="primary"
     (click)="addChore()"
+    [disabled]="form"
   >
     Save
   </button>
