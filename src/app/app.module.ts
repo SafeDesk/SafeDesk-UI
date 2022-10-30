@@ -29,6 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CreateTaskComponent,
     FormComponent,
     SidebarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
