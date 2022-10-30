@@ -22,8 +22,6 @@ export class FormComponent implements OnInit {
     });
   }
   async addChore() {
-    // const { data } = await axios.get("https://safedesk.herokuapp.com/api/v1/chores");
-    // console.log(data);
     let data = this.form.value;
     let postData = {
       task_name: data.taskName,
@@ -41,6 +39,4 @@ export class FormComponent implements OnInit {
       this.form.reset();
     }
   }
-  // const { data } = await axios.get("https://safedesk.herokuapp.com/api/v1/chores");
-  // console.log(data);
 }

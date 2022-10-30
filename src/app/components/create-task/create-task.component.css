@@ -1,30 +1,36 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-#chores {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
   width: 100%;
 }
 
-#chores td,
-#chores th {
+td,
+th {
   border: 1px solid #ddd;
-  padding: 8px;
 }
 
-#chores tr:nth-child(even) {
+tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-#chores tr:hover {
+tr:hover {
   background-color: #ddd;
 }
 
-#chores th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
+th {
+  /* padding-bottom: 12px; */
+  text-align: center;
   background-color: #673ab7;
   color: white;
+}
+
+td,
+th {
+  /* width: 1%; */
+  text-align: center;
 }
