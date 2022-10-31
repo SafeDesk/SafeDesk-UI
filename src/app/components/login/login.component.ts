@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
    }
 
   loginSubmited(){
-    console.log(this.loginForm);
-    alert("Successful Login");
+    
   }
 }
