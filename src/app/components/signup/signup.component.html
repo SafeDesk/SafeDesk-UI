@@ -1,0 +1,38 @@
+<div class="container form-3" >
+    <p>Create Account</p>
+
+    <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <Label>Fname</Label>
+                <input type="text" class="form-control" ngModel name="fname">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Lname</label>
+                <input type="text" class="form-control" ngModel name="lname" id="">
+            </div>
+            <div class="col-md-12 mb-3">
+                <label>Email</label>
+                <input type="email" class="form-control" ngModel name="email" id="">
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+                <div >
+                    <label>Password</label>
+                    <input type="password" class="form-control" ngModel name="password" id="">
+                </div>
+                
+                
+                <div >
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" ngModel name="confimPassword" id="">
+                </div>
+            </div>
+           
+        </div>
+        <button class="btn btn-primary">Create</button>
+    </form>
+
+</div>

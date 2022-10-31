@@ -29,9 +29,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +49,8 @@ import { MatSortModule } from '@angular/material/sort';
     CreateTaskComponent,
     FormComponent,
     SidebarComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
