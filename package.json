@@ -23,11 +23,12 @@
     "@fortawesome/angular-fontawesome": "^0.11.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "axios": "^0.24.0",
+    "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
     "hammerjs": "^2.0.8",
     "ng": "^0.0.0",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.6.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

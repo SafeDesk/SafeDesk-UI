@@ -1,7 +1,9 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { CreateTaskComponent } from '../create-task.component';
 
 @Component({
   selector: 'app-form',
@@ -11,7 +13,10 @@ import axios from 'axios';
 export class FormComponent implements OnInit {
   minDate: Date;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private task: CreateTaskComponent
+  ) {
     const currentDay = new Date(Date.now());
     this.minDate = currentDay;
   }
@@ -28,7 +33,6 @@ export class FormComponent implements OnInit {
       description: ['', Validators.required],
     });
   }
-
   async addChore() {
     let data = this.form.value;
     let postData = {
@@ -40,11 +44,19 @@ export class FormComponent implements OnInit {
       parent_id: '',
     };
     if (this.form.valid) {
-      await axios.post(
-        'https://safedesk.herokuapp.com/api/v1/chores/',
-        postData
-      );
-      this.form.reset();
+      try {
+        await axios.post(
+          'https://safedesk.herokuapp.com/api/v1/chores/',
+          postData
+        );
+        this.task.getdata();
+        this.form.reset();
+        Swal.fire('Chores added successfully').then(function () {
+          window.location.reload();
+        });
+      } catch (err) {
+        alert('Could not add');
+      }
     }
   }
 }
