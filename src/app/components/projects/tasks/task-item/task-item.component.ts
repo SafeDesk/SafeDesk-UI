@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 // import { MatDialog } from '@angular/material/dialog';
 // import { MatButton } from '@angular/material/button';
@@ -10,7 +10,7 @@ import {TaskItemDescriptionComponent} from '../task-item-description/task-item-d
   styleUrls: ['./task-item.component.css']
 })
 export class TaskItemComponent implements OnInit {
-
+  @Input() taskitem :any = {} 
   ngOnInit(): void {
      
     // console.log(today)
