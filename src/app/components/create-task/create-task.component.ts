@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -22,6 +22,7 @@ export class CreateTaskComponent implements OnInit {
     'task_priority',
     'date_completed',
     'description',
+    'action'
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -54,12 +55,12 @@ export class CreateTaskComponent implements OnInit {
     }
   };
 
-  // editChore() {
-  //   this.dialog.open(FormComponent, {
-  //     width: '40%',
-
-  //   });
-  // }
+  editChore(row : any) {
+    this.dialog.open(FormComponent, {
+      width: '40%',
+      data:row
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

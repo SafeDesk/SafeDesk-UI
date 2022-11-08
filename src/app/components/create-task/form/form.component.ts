@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
+// import { MatTableDataSource } from '@angular/material/table';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
 import { CreateTaskComponent } from '../create-task.component';
 
 @Component({
@@ -15,9 +18,11 @@ export class FormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private task: CreateTaskComponent
+    private task: CreateTaskComponent,
+    @Inject(MAT_DIALOG_DATA) public editData: any
   ) {
-    const currentDay = new Date(Date.now());
+    const currentDay = new Date();
+    // let date = moment(currentDay, "MM/DD/YYYY");
     this.minDate = currentDay;
   }
 
@@ -32,6 +37,26 @@ export class FormComponent implements OnInit {
       date: ['', Validators.required],
       description: ['', Validators.required],
     });
+    // console.log(this.editData);
+    // console.log(this.form.controls['date']);
+    let date = new Date(this.editData.date_completed);
+    // console.log(this.editData.created_at);
+    // console.log(date.toUTCString());
+    // console.log(date.toLocaleString());
+    // let dddd = date.toUTCString();
+    // date.setHours(this.editData.date_completed.getHours() + 24);
+    // console.log(dddd);
+    // console.log(date);
+
+    if (this.editData) {
+      console.log(this.form.controls['taskPriority']);
+      console.log(this.form.controls['date']);
+      this.form.controls['taskName'].setValue(this.editData.task_name);
+      this.form.controls['points'].setValue(this.editData.points);
+      this.form.controls['taskPriority'].setValue(this.editData.task_priority);
+      this.form.controls['date'].setValue(this.editData.date_completed);
+      this.form.controls['description'].setValue(this.editData.description);
+    }
   }
   async addChore() {
     let data = this.form.value;
@@ -40,7 +65,7 @@ export class FormComponent implements OnInit {
       points: data.points,
       task_priority: data.taskPriority,
       description: data.description,
-      date_completed: data.date,
+      date_completed: data.date.toUTCString(),
       parent_id: '',
     };
     if (this.form.valid) {
@@ -55,7 +80,7 @@ export class FormComponent implements OnInit {
           window.location.reload();
         });
       } catch (err) {
-        alert('Could not add');
+        alert('Could not add chores');
       }
     }
   }
