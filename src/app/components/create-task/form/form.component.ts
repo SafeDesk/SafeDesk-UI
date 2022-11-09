@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
     });
     // console.log(this.editData);
     // console.log(this.form.controls['date']);
-    let date = new Date(this.editData.date_completed);
+    // let date = new Date(this.editData.date_completed);
     // console.log(this.editData.created_at);
     // console.log(date.toUTCString());
     // console.log(date.toLocaleString());
@@ -60,14 +60,18 @@ export class FormComponent implements OnInit {
   }
   async addChore() {
     let data = this.form.value;
+    let date = data.date;
+    date.setHours(23, 59, 0);
+    console.log(date.toISOString());
     let postData = {
       task_name: data.taskName,
       points: data.points,
       task_priority: data.taskPriority,
       description: data.description,
-      date_completed: data.date.toUTCString(),
+      date_completed: data.date.toISOString(),
       parent_id: '',
     };
+
     if (this.form.valid) {
       try {
         await axios.post(
