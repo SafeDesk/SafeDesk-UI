@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class CreateTaskComponent implements OnInit {
     'task_priority',
     'date_completed',
     'description',
-    'action'
+    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -55,10 +56,10 @@ export class CreateTaskComponent implements OnInit {
     }
   };
 
-  editChore(row : any) {
+  editChore(row: any) {
     this.dialog.open(FormComponent, {
       width: '40%',
-      data:row
+      data: row,
     });
   }
 
@@ -69,5 +70,11 @@ export class CreateTaskComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  async deleteChore(rid: any) {
+    await axios.delete(`https://safedesk.herokuapp.com/api/v1/chores/${rid}`);
+    Swal.fire('Chore deleted successfully').then(function () {
+      window.location.reload();
+    });
   }
 }

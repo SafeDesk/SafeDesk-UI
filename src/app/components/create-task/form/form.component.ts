@@ -25,6 +25,7 @@ export class FormComponent implements OnInit {
   }
 
   form!: FormGroup;
+  actionBtn: string = 'Save';
   listData: any;
   ngOnInit(): void {
     this.listData = [];
@@ -37,6 +38,7 @@ export class FormComponent implements OnInit {
     });
 
     if (this.editData) {
+      this.actionBtn = 'Update';
       this.form.controls['taskName'].setValue(this.editData.task_name);
       this.form.controls['points'].setValue(this.editData.points);
       this.form.controls['taskPriority'].setValue(
@@ -47,32 +49,52 @@ export class FormComponent implements OnInit {
     }
   }
   async addChore() {
-    let data = this.form.value;
-    let date = data.date;
-    date.setHours(23, 59, 0);
-    let postData = {
-      task_name: data.taskName,
-      points: data.points,
-      task_priority: data.taskPriority,
-      description: data.description,
-      date_completed: data.date.toISOString(),
-      parent_id: '',
-    };
+    if (!this.editData) {
+      let data = this.form.value;
+      let date = data.date;
+      date.setHours(23, 59, 0);
+      let postData = {
+        task_name: data.taskName,
+        points: data.points,
+        task_priority: data.taskPriority,
+        description: data.description,
+        date_completed: data.date.toISOString(),
+        parent_id: '',
+      };
 
-    if (this.form.valid) {
-      try {
-        await axios.post(
-          'https://safedesk.herokuapp.com/api/v1/chores/',
-          postData
-        );
-        this.task.getdata();
-        this.form.reset();
-        Swal.fire('Chores added successfully').then(function () {
-          window.location.reload();
-        });
-      } catch (err) {
-        alert('Could not add chores');
+      if (this.form.valid) {
+        try {
+          await axios.post(
+            'https://safedesk.herokuapp.com/api/v1/chores/',
+            postData
+          );
+          this.task.getdata();
+          this.form.reset();
+          Swal.fire('Chores added successfully').then(function () {
+            window.location.reload();
+          });
+        } catch (err) {
+          alert('Could not add chores');
+        }
       }
+    } else {
+      let data = this.form.value;
+      let putData = {
+        task_name: data.taskName,
+        points: data.points,
+        task_priority: data.taskPriority,
+        description: data.description,
+        date_completed: data.date,
+        parent_id: '',
+      };
+      await this.updateProduct(putData, this.editData.id);
     }
+  }
+
+  async updateProduct(data: any, id: any) {
+    await axios.put(`https://safedesk.herokuapp.com/api/v1/chores/${id}`, data);
+    Swal.fire('Chores updated successfully').then(function () {
+      window.location.reload();
+    });
   }
 }
