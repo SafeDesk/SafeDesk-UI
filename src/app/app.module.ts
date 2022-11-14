@@ -34,6 +34,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from 'src/environments/environment';
 
 
 @NgModule({
@@ -76,6 +78,9 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    AuthModule.forRoot({
+      ... env.auth,
+    })
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],

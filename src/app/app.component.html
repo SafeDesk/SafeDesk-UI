@@ -1,3 +1,7 @@
+<!-- <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
+  <app-loading></app-loading>
+</div> -->
+
 <app-navbar></app-navbar>
 <app-sidebar [sidebarstatus]="sidebarstatus" [ngClass]="{'app-side-nav-open':sidebarstatus}"></app-sidebar>
 <div class="container">

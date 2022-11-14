@@ -4,11 +4,28 @@
       <!-- <span class="navbar-toggler-icon"></span> -->
     <!-- </button> -->
     <div class="navbar-nav">
-      <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" routerLink="loginlink"><b>Sign In</b></a>
-        
-        <!-- <a class="nav-link px-3" href="#"><b>Sign out</b></a> -->
-      </div>
+      <div class="row">
+        <div class="col-6 offset-3">
+            <div >
+                <button class="btn btn-primary btn-block" style="
+                background: transparent;
+                width: 90px;
+                margin-right: 50px;
+            " (click)="loginWithRedirect()" *ngIf="(auth.isAuthenticated$ | async) == false">Log In</button>
+                                          
+            </div>
+            <div >
+              <button class="btn btn-primary btn-block" style="
+              background: transparent;
+              width: 90px;
+              margin-right: 50px;
+          "(click)="logout()" *ngIf="(auth.isAuthenticated$ | async)">Log out</button>
+                                        
+          </div>    
+
+        </div>                    
+    </div>
+    
     </div>
   </header>
 
