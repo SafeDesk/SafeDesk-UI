@@ -1,11 +1,12 @@
 import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class CreateTaskComponent implements OnInit {
     'task_priority',
     'date_completed',
     'description',
+    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -54,12 +56,12 @@ export class CreateTaskComponent implements OnInit {
     }
   };
 
-  // editChore() {
-  //   this.dialog.open(FormComponent, {
-  //     width: '40%',
-
-  //   });
-  // }
+  editChore(row: any) {
+    this.dialog.open(FormComponent, {
+      width: '40%',
+      data: row,
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -68,5 +70,19 @@ export class CreateTaskComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  async deleteChore(rid: any) {
+    Swal.fire({
+      title: 'Confirm deletion?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Chore deleted successfully').then(function () {
+          axios.delete(`https://safedesk.herokuapp.com/api/v1/chores/${rid}`);
+          window.location.reload();
+        });
+      }
+    });
   }
 }

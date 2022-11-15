@@ -44,7 +44,6 @@
         [matDatepicker]="picker"
         placeholder="Pick a date"
       />
-      <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field>
@@ -70,6 +69,6 @@
     [disabled]="form.invalid"
     mat-dialog-close
   >
-    Save
+    {{ actionBtn }}
   </button>
 </div>
