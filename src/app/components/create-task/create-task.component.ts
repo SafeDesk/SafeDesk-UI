@@ -72,9 +72,17 @@ export class CreateTaskComponent implements OnInit {
     }
   }
   async deleteChore(rid: any) {
-    await axios.delete(`https://safedesk.herokuapp.com/api/v1/chores/${rid}`);
-    Swal.fire('Chore deleted successfully').then(function () {
-      window.location.reload();
+    Swal.fire({
+      title: 'Confirm deletion?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Chore deleted successfully').then(function () {
+          axios.delete(`https://safedesk.herokuapp.com/api/v1/chores/${rid}`);
+          window.location.reload();
+        });
+      }
     });
   }
 }
