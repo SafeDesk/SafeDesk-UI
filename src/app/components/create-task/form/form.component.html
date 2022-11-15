@@ -16,7 +16,8 @@
         formControlName="points"
         matInput
         type="number"
-        placeholder="Enter Points"
+        min="0"
+        placeholder="Enter Points (Numerical Value)"
       />
     </mat-form-field>
 
@@ -39,12 +40,13 @@
       <input
         formControlName="date"
         matInput
+        [min]="minDate"
         [matDatepicker]="picker"
         placeholder="Pick a date"
       />
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -65,30 +67,9 @@
     mat-raised-button
     color="primary"
     (click)="addChore()"
+    [disabled]="form.invalid"
+    mat-dialog-close
   >
     Save
   </button>
 </div>
-
-<!-- <div class="container">
-  <div style="margin-top: 10px">
-    <table id="chores" class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Task Name</th>
-          <th>Points</th>
-          <th>Priority</th>
-          <th>Date</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <td>Help</td>
-        <td>Help</td>
-        <td>Help</td>
-        <td>Help</td>
-        <td>Help</td>
-      </tbody>
-    </table>
-  </div>
-</div> -->

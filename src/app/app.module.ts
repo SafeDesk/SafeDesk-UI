@@ -30,6 +30,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +55,7 @@ import { LoginComponent } from './components/login/login.component';
     FormComponent,
     SidebarComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +75,12 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    AuthModule.forRoot({
+      ... env.auth,
+    })
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],

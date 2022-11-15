@@ -1,5 +1,6 @@
 # SafeDesk
 
+This application includes is developed for parents and children. Parents can assign chores or homework to the children. Children will finish the chores and earn points  to get rewards.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
 ## Development server
