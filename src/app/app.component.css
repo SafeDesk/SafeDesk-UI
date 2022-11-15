@@ -1,10 +1,11 @@
 .footer {
-    position: fixed;
+    position: sticky;
     width: 83%;
     bottom: 0;
 }
 app-sidebar{
     position: absolute;
+    position: fixed;
     left:0rem;
     width: 63px;
     height: -webkit-fill-available;
