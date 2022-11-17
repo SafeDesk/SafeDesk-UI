@@ -12,3 +12,14 @@ body {
   justify-content: center;
   font-size: 16px;
 }
+
+/* .mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: #3a68b7;
+} */
+
+.addHomework {
+  background-color: #3a68b7;
+}
