@@ -36,6 +36,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from 'src/environments/environment';
+import { HomeworkComponent } from './components/homework/homework.component';
+import { HomeFormComponent } from './components/homework/home-form/home-form.component';
 
 
 @NgModule({
@@ -56,6 +58,8 @@ import { environment as env } from 'src/environments/environment';
     SidebarComponent,
     LoginComponent,
     SignupComponent,
+    HomeworkComponent,
+    HomeFormComponent,
   ],
   imports: [
     BrowserModule,
