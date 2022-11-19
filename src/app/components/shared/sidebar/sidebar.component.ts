@@ -23,15 +23,15 @@ export class SidebarComponent implements OnInit {
     },
     {
       number: '3',
-      name: 'Create Chores',
+      name: 'Homework',
       icon: 'fa-solid fa-book-open',
       rl: 'homework',
     },
     {
       number: '4',
-      name: 'Homework',
+      name: 'Volunteer',
       icon: 'fa-solid fa-note-sticky',
-      rl: 'hw',
+      rl: 'volunteer',
     },
   ];
   constructor() {}

@@ -5,11 +5,13 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeworkComponent } from './components/homework/homework.component';
+import { VolunteerComponent } from './components/volunteer/volunteer.component';
 const routes: Routes = [
   { path: '', component: ProjectsComponent },
   { path: 'dashboard', component: ProjectsComponent },
   { path: 'createChores', component: CreateTaskComponent },
   { path: 'homework', component: HomeworkComponent },
+  { path: 'volunteer', component: VolunteerComponent },
   {
     path: 'loginlink',
     component: LoginComponent,
