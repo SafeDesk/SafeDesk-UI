@@ -22,10 +22,25 @@ export class TasksComponent implements OnInit {
         'https://safedesk.herokuapp.com/api/v1/chores/'
       );
       this.data = data;
-      console.log(this.data)
+      console.log(typeof(this.data))
     } catch (e) {
       console.log(e);
     }
+    this.getMathsData();
+  };
+
+  
+  getMathsData = async () => {
+    try {
+      const { data } = await axios.get(
+        'https://safedesk.herokuapp.com/api/v1/homework/'
+      );
+      this.data = this.data.concat(data);
+      // console.log('inside mathhw',this.data);
+    } catch (e) {
+      console.log(e);
+    }
+
   };
 }
 function type(data: never[]): any {

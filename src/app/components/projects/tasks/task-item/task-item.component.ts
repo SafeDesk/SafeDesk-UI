@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 // import { MatDialog } from '@angular/material/dialog';
 // import { MatButton } from '@angular/material/button';
 import {TaskItemDescriptionComponent} from '../task-item-description/task-item-description.component'
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-task-item',
@@ -12,12 +13,18 @@ import {TaskItemDescriptionComponent} from '../task-item-description/task-item-d
 export class TaskItemComponent implements OnInit {
   @Input() taskitem :any = {} 
   ngOnInit(): void {
-     
+     var progressList = JSON.parse(localStorage.getItem("progressList") || "[]");
+     progressList.forEach((item)=>{
+      if (item.taskName === this.taskitem.task_name){
+        console.log(item.taskName, this.taskitem.task_name);
+        this.markCompleted();
+      }
+     })
     // console.log(today)
   }
   today: number = Date.now();
-
-  constructor(public dialog: MatDialog) {}
+  isChecked = false;
+  constructor(public dialog: MatDialog, private msg : MessengerService) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(TaskItemDescriptionComponent);
@@ -25,6 +32,17 @@ export class TaskItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+    
   }
+  markCompleted(){
+    this.isChecked = true;
+    this.handleAddToProgress()
+  }
+
+  handleAddToProgress(){
+    this.msg.sendMsg(this.taskitem);
+  }
+
+  
 }
 

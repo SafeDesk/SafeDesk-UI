@@ -1,19 +1,33 @@
 <div class="card">
     <div class="card-body">
 <ul class="list-group">
-    <li class="list-group-item" *ngFor = "let i of [1,2,3,4,5,6]">
-        <app-progress-item></app-progress-item>
+    <li class="list-group-item" *ngFor = "let i of progress">
+        <app-progress-item [progressItem] = "i"></app-progress-item>
     </li>
     <ul></ul>
     <li class="list-group-item " style="display: inline;">
         <div>
-            <span class="list-group-item-danger" style="float:left" >ToDo : 3</span>
+            <!-- <span class="list-group-item-danger" style="float:left" >ToDo : 3</span> -->
        
-            <span class="list-group-item-success" style="float:right">Done : 4</span>
+            <span class="list-group-item-success" style="float: center;">Earned Points : {{totalCompleted}}</span>
             
         </div>
+    </li>
+    <li>
+        <button
+      mat-button
+      
+      class="btn btn-md btn-outline-primary"
+      (click)="redeemPoints()"
+    >
+      Redeem Points
+    </button>
     </li>
    
 </ul>
 </div>
+</div>
+<br>
+<div class="card">
+    Reward Points Earned: {{redeemedPoints}}
 </div>
