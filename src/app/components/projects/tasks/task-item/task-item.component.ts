@@ -17,7 +17,8 @@ export class TaskItemComponent implements OnInit {
      progressList.forEach((item)=>{
       if (item.taskName === this.taskitem.task_name){
         console.log(item.taskName, this.taskitem.task_name);
-        this.markCompleted();
+        // this.markCompleted();
+        this.isChecked = true;
       }
      })
     // console.log(today)

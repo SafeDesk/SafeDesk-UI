@@ -19,12 +19,28 @@ export class ProgressComponent implements OnInit {
   ngOnInit(): void {
     var progressList = JSON.parse(localStorage.getItem("progressList") || "[]");
     this.progress = progressList;
+
+      
+    
+    localStorage.setItem('progressList', JSON.stringify(this.progress));
+    progressList = JSON.parse(localStorage.getItem("progressList") || "[]");
+    console.log(progressList)
+    this.totalCompleted = 0
+    this.progress.forEach((item)=>{
+      
+        this.totalCompleted += item.taskPoints
+      
+    })
+    localStorage.setItem('totalCompleted', String(this.totalCompleted));
+    this.totalCompleted = (localStorage.getItem('totalCompleted'|| 0));
+    console.log(this.totalCompleted);
+    
     this.msg.getMsg().subscribe((task :any)=>{
       // console.log(task);
     console.log(progressList, this.progress);
     
           this.progress.push({
-            taskName : task.gi,
+            taskName : task.task_name,
             taskPoints : task.points,
             state : "DONE"
     
