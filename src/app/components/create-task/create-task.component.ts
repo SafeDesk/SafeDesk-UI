@@ -7,6 +7,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { MessengerService } from 'src/app/services/messenger.service';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -31,9 +33,10 @@ export class CreateTaskComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable)
   table!: MatTable<any>;
-
-  constructor(private dialog: MatDialog) {}
+  token: String = '';
+  constructor(private dialog: MatDialog, private msg: MessengerService) {}
   ngOnInit(): void {
+    this.token = this.msg.getToken();
     this.getdata();
   }
 
@@ -46,7 +49,8 @@ export class CreateTaskComponent implements OnInit {
   getdata = async () => {
     try {
       const { data } = await axios.get(
-        'https://safedesk.herokuapp.com/api/v1/chores/'
+        'https://safedesk.herokuapp.com/api/v1/chores/',
+        { headers: { Authorization: `Bearer ${this.token}` } }
       );
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
@@ -76,12 +80,15 @@ export class CreateTaskComponent implements OnInit {
       title: 'Confirm deletion?',
       showDenyButton: true,
       confirmButtonText: 'Yes',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire('Chore deleted successfully').then(function () {
-          axios.delete(`https://safedesk.herokuapp.com/api/v1/chores/${rid}`);
-          window.location.reload();
-        });
+        await axios.delete(
+          `https://safedesk.herokuapp.com/api/v1/chores/${rid}`,
+          {
+            headers: { Authorization: `Bearer ${this.token}` },
+          }
+        );
+        window.location.reload();
       }
     });
   }
