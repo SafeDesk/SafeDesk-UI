@@ -38,6 +38,8 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from 'src/environments/environment';
 import { HomeworkComponent } from './components/homework/homework.component';
 import { HomeFormComponent } from './components/homework/home-form/home-form.component';
+import { VolunteerComponent } from './components/volunteer/volunteer.component';
+import { VolFormComponent } from './components/volunteer/vol-form/vol-form.component';
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import { HomeFormComponent } from './components/homework/home-form/home-form.com
     SignupComponent,
     HomeworkComponent,
     HomeFormComponent,
+    VolunteerComponent,
+    VolFormComponent,
   ],
   imports: [
     BrowserModule,
