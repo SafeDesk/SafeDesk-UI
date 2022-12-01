@@ -103,15 +103,4 @@ export class FormComponent implements OnInit {
       });
     }
   }
-
-  // async updateProduct(data: any, id: any, head: object) {
-  //   await axios.put(
-  //     `https://safedesk.herokuapp.com/api/v1/chores/${id}`,
-  //     data,
-  //     head
-  //   );
-  //   Swal.fire('Chores updated successfully').then(function () {
-  //     window.location.reload();
-  //   });
-  // }
 }
