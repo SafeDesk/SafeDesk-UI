@@ -6,6 +6,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { HomeworkComponent } from '../homework.component';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-home-form',
@@ -18,6 +19,7 @@ export class HomeFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private task: HomeworkComponent,
+    private msg: MessengerService,
     @Inject(MAT_DIALOG_DATA) public editData: any
   ) {
     const currentDay = new Date();
@@ -27,7 +29,9 @@ export class HomeFormComponent implements OnInit {
   form!: FormGroup;
   actionBtn: string = 'Save';
   listData: any;
+  token: string = '';
   ngOnInit(): void {
+    this.token = this.msg.getToken();
     this.listData = [];
     this.form = this.formBuilder.group({
       taskName: ['', Validators.required],
@@ -59,14 +63,14 @@ export class HomeFormComponent implements OnInit {
         task_priority: data.taskPriority,
         description: data.description,
         date_completed: data.date.toISOString(),
-        parent_id: '',
       };
 
       if (this.form.valid) {
         try {
           await axios.post(
             'https://safedesk.herokuapp.com/api/v1/homework/',
-            postData
+            postData,
+            { headers: { Authorization: `Bearer ${this.token}` } }
           );
           this.task.getdata();
           this.form.reset();
@@ -85,19 +89,19 @@ export class HomeFormComponent implements OnInit {
         task_priority: data.taskPriority,
         description: data.description,
         date_completed: data.date,
-        parent_id: '',
       };
-      await this.updateProduct(putData, this.editData.id);
+      await axios.put(
+        `https://safedesk.herokuapp.com/api/v1/homework/${this.editData.id}`,
+        putData,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      );
+      Swal.fire('Chores updated successfully').then(function () {
+        window.location.reload();
+      });
     }
   }
 
-  async updateProduct(data: any, id: any) {
-    await axios.put(
-      `https://safedesk.herokuapp.com/api/v1/homework/${id}`,
-      data
-    );
-    Swal.fire('Chores updated successfully').then(function () {
-      window.location.reload();
-    });
-  }
+  async updateProduct(data: any, id: any) {}
 }

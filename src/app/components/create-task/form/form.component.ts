@@ -63,7 +63,6 @@ export class FormComponent implements OnInit {
         task_priority: data.taskPriority,
         description: data.description,
         date_completed: data.date.toISOString(),
-        parent_id: '',
       };
 
       if (this.form.valid) {

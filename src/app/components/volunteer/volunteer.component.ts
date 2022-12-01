@@ -7,6 +7,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Injectable({
   providedIn: 'root',
@@ -30,9 +31,10 @@ export class VolunteerComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable)
   table!: MatTable<any>;
-
-  constructor(private dialog: MatDialog) {}
+  token: string = '';
+  constructor(private dialog: MatDialog, private msg: MessengerService) {}
   ngOnInit(): void {
+    this.token = this.msg.getToken();
     this.getdata();
   }
 
@@ -45,7 +47,10 @@ export class VolunteerComponent implements OnInit {
   getdata = async () => {
     try {
       const { data } = await axios.get(
-        'https://safedesk.herokuapp.com/api/v1/volunteer/'
+        'https://safedesk.herokuapp.com/api/v1/volunteer/',
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
       );
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
@@ -75,14 +80,15 @@ export class VolunteerComponent implements OnInit {
       title: 'Confirm deletion?',
       showDenyButton: true,
       confirmButtonText: 'Yes',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire('Volunteer task deleted successfully').then(function () {
-          axios.delete(
-            `https://safedesk.herokuapp.com/api/v1/volunteer/${rid}`
-          );
-          window.location.reload();
-        });
+        await axios.delete(
+          `https://safedesk.herokuapp.com/api/v1/volunteer/${rid}`,
+          {
+            headers: { Authorization: `Bearer ${this.token}` },
+          }
+        );
+        window.location.reload();
       }
     });
   }
