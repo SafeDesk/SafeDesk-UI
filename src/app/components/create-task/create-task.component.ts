@@ -90,10 +90,6 @@ export class CreateTaskComponent implements OnInit {
         );
         window.location.reload();
       }
-      // window.location.reload();
     });
-    // await axios.delete(`https://safedesk.herokuapp.com/api/v1/chores/${rid}`, {
-    //   headers: { Authorization: `Bearer ${this.token}` },
-    // });
   }
 }
