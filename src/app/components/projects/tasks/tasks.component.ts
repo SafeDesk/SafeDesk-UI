@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
   token: string = '';
   ngOnInit(): void {
     this.token = this.msg.getToken();
+
     this.getdata();
   }
   getdata = async () => {
@@ -44,7 +45,6 @@ export class TasksComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
-    this.getMathsData();
   };
 }
 function type(data: never[]): any {
