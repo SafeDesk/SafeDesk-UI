@@ -102,6 +102,4 @@ export class HomeFormComponent implements OnInit {
       });
     }
   }
-
-  async updateProduct(data: any, id: any) {}
 }

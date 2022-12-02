@@ -33,6 +33,12 @@ export class SidebarComponent implements OnInit {
       icon: 'fa-solid fa-note-sticky',
       rl: 'volunteer',
     },
+    {
+      number: '5',
+      name: 'Sos',
+      icon: 'fa-solid fa-circle-exclamation',
+      rl: 'sos',
+    },
   ];
   constructor() {}
 

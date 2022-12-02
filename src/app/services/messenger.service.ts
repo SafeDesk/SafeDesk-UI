@@ -17,6 +17,6 @@ export class MessengerService {
   }
 
   getToken() {
-    return 'eyJhbGciOiJIUzI1NiJ9.eyJwYXJlbnRfaWQiOiIzOTE5MjcyZC03MWNiLTRjYTYtOTNiOC01ZGVkNzljYWYyYzAiLCJleHBpcnlfdGltZSI6IjIwMjItMTItMDIgMTc6MDM6MDggKzAwMDAiLCJpc0NoaWxkIjpmYWxzZX0.IHBUWoX47EIicshmL4n0rPP0GvLOtNYJ3JnsmchmxLk';
+    return 'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhYml0aGEyM0BnbWFpbC5jb20iLCJwYXJlbnRfaWQiOiIzOTE5MjcyZC03MWNiLTRjYTYtOTNiOC01ZGVkNzljYWYyYzAiLCJleHBpcnlfdGltZSI6IjIwMjItMTItMDIgMjI6MDY6MDIgKzAwMDAiLCJpc0NoaWxkIjp0cnVlfQ.gb9mXCe9R3VMwDyNsCKUq2n3GfPoThDBIfx08n9hrU8';
   }
 }

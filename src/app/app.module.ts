@@ -40,6 +40,7 @@ import { HomeworkComponent } from './components/homework/homework.component';
 import { HomeFormComponent } from './components/homework/home-form/home-form.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { VolFormComponent } from './components/volunteer/vol-form/vol-form.component';
+import { SosComponent } from './components/sos/sos.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { VolFormComponent } from './components/volunteer/vol-form/vol-form.compo
     HomeFormComponent,
     VolunteerComponent,
     VolFormComponent,
+    SosComponent,
   ],
   imports: [
     BrowserModule,
