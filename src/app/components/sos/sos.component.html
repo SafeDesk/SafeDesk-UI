@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container" *ngIf="!is_parent">
   <img (click)="sendLocation()" src="../../../assets/7764-sos-animation.gif" />
   <div class="inner">{{ value }}</div>
 </div>
 
-<div class="mapElement">
+<div class="mapElement" *ngIf="is_parent">
   <div>
-    <p class="danger">SOS ALERT RECEIVED!!!</p>
-    <p class="date">Created At : {{ date }}</p>
+    <p class="danger">{{ alert }}</p>
+    <p class="date">{{ date }}</p>
     <p class="url">
       <a href="{{ google }}">{{ google }}</a>
     </p>

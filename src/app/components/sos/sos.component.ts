@@ -12,13 +12,16 @@ declare const L: any;
 export class SosComponent implements OnInit {
   value = '';
   google = '';
+  alert = '';
   date: any;
   token: string = '';
+  is_parent!: any;
   map_info = {};
   constructor(private msg: MessengerService) {}
 
   ngOnInit(): void {
     this.token = this.msg.getToken();
+    this.is_parent = this.msg.isParent();
   }
 
   async sendLocation() {
@@ -50,6 +53,7 @@ export class SosComponent implements OnInit {
   }
 
   async setView() {
+    this.alert = 'SOS ALERT RECEIVED!!!';
     let { data } = await axios.get(
       'https://safedesk.herokuapp.com/api/v1/sos/',
       {
@@ -74,6 +78,7 @@ export class SosComponent implements OnInit {
       radius: 500,
     }).addTo(map);
     this.google = mapData.map_url;
-    this.date = new Date(data[0].created_at);
+    const time = new Date(data[0].created_at);
+    this.date = 'Created At :' + { time };
   }
 }

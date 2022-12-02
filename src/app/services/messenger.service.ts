@@ -5,7 +5,8 @@ import { Subject } from 'rxjs';
 })
 export class MessengerService {
   subject = new Subject();
-  token: string = ""
+  token: string = '';
+  is_parent!: boolean;
   constructor() {}
 
   sendMsg(task) {
@@ -18,7 +19,12 @@ export class MessengerService {
   }
 
   getToken() {
-    this.token = JSON.parse(localStorage.getItem('userToken') || '' )
+    this.token = JSON.parse(localStorage.getItem('userToken') || '');
     return this.token;
+  }
+
+  isParent() {
+    this.is_parent = JSON.parse(localStorage.getItem('isParent') || '');
+    return this.is_parent;
   }
 }
