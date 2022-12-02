@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -32,9 +33,9 @@ export class SignupComponent implements OnInit {
         console.warn(result);
       });
     } else {
-      // this.userData.createchild(data).subscribe((r)=>{
-      // console.warn(r)
-      // })
+       this.userData.createchild(data).subscribe((r)=>{
+      console.warn(r)
+       })
     }
   }
   mypfunct() {
@@ -49,7 +50,7 @@ export class SignupComponent implements OnInit {
 
   mycfunct() {
     console.log(
-      'sp',
+      'sc',
       (<HTMLInputElement>document.getElementById('sc')).checked
     );
     if ((<HTMLInputElement>document.getElementById('sc')).checked) {

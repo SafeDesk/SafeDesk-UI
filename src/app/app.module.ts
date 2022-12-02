@@ -93,7 +93,8 @@ import { SosComponent } from './components/sos/sos.component';
     AuthModule.forRoot({
       ... env.auth,
     }),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],
