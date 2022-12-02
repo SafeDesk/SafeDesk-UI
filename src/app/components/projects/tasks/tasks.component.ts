@@ -25,7 +25,7 @@ export class TasksComponent implements OnInit {
         { headers: { Authorization: `Bearer ${this.token}` } }
       );
       this.data = data;
-      console.log('here data',this.data);
+      console.log('here data', this.data);
     } catch (e) {
       console.log(e);
     }
@@ -45,7 +45,7 @@ export class TasksComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
-    this.getVolData()
+    this.getVolData();
   };
   getVolData = async () => {
     try {
@@ -54,7 +54,6 @@ export class TasksComponent implements OnInit {
         { headers: { Authorization: `Bearer ${this.token}` } }
       );
       this.data = this.data.concat(data);
-      // console.log('inside mathhw',this.data);
 
       console.log(typeof this.data);
     } catch (e) {

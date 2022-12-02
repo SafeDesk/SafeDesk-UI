@@ -1,30 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 // import {FormBuilder, Validators} from '@angular/forms';
-import {ThemePalette} from '@angular/material/core';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-task-item-description',
   templateUrl: './task-item-description.component.html',
-  styleUrls: ['./task-item-description.component.css']
+  styleUrls: ['./task-item-description.component.css'],
 })
 export class TaskItemDescriptionComponent implements OnInit {
-
-  constructor() { 
-    
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.onClik();
   }
   color: ThemePalette = 'warn';
   isChecked = false;
-  // isChecked = true;
-  
-  onClik(){
+
+  onClik() {
     console.log(this.isChecked);
   }
 
-  markCompleted(){
+  markCompleted() {
     this.isChecked = true;
   }
 }
