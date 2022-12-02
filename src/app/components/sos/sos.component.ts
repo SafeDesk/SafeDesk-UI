@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { MessengerService } from 'src/app/services/messenger.service';
 
+declare const L: any;
+
 @Component({
   selector: 'app-sos',
   templateUrl: './sos.component.html',
@@ -9,6 +11,8 @@ import { MessengerService } from 'src/app/services/messenger.service';
 })
 export class SosComponent implements OnInit {
   value = '';
+  google = '';
+  date: any;
   token: string = '';
   map_info = {};
   constructor(private msg: MessengerService) {}
@@ -42,5 +46,34 @@ export class SosComponent implements OnInit {
         }
       );
     });
+    this.setView();
+  }
+
+  async setView() {
+    let { data } = await axios.get(
+      'https://safedesk.herokuapp.com/api/v1/sos/',
+      {
+        headers: { Authorization: `Bearer ${this.token}` },
+      }
+    );
+
+    console.log(new Date(data[0].created_at));
+    const mapData = data[0].map_info;
+    console.log(mapData);
+    var map = L.map('map').setView([mapData.latitute, mapData.longitude], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 13,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+    var marker = L.marker([mapData.latitute, mapData.longitude]).addTo(map);
+    var circle = L.circle([mapData.latitute, mapData.longitude], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 500,
+    }).addTo(map);
+    this.google = mapData.map_url;
+    this.date = new Date(data[0].created_at);
   }
 }

@@ -21,6 +21,36 @@
 }
 .inner {
   color: green;
-  margin-top: 2rem;
-  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  font-size: 2rem;
+}
+#map {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60vh;
+  width: 60vh;
+}
+
+.mapElement {
+  text-align: center;
+  align-items: center;
+}
+
+.danger {
+  color: red;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.url {
+  margin-top: 30px;
+  font-size: 1.7rem;
+}
+
+.date {
+  margin-top: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }

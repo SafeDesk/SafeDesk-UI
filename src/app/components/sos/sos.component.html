@@ -2,3 +2,15 @@
   <img (click)="sendLocation()" src="../../../assets/7764-sos-animation.gif" />
   <div class="inner">{{ value }}</div>
 </div>
+
+<div class="mapElement">
+  <div>
+    <p class="danger">SOS ALERT RECEIVED!!!</p>
+    <p class="date">Created At : {{ date }}</p>
+    <p class="url">
+      <a href="{{ google }}">{{ google }}</a>
+    </p>
+  </div>
+
+  <div id="map"></div>
+</div>
