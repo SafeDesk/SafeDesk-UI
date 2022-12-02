@@ -1,49 +1,76 @@
-<div class="container form-3" >
-    <p>Create Account</p>
+<div class="container form-3">
+  <p>Create Account</p>
 
-    <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
-        <div class="row">
+  <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <Label>Fname</Label>
+        <input type="text" class="form-control" ngModel name="first_name" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Lname</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="last_name"
+          id=""
+        />
+      </div>
+      <div class="col-md-12 mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" ngModel name="email" id="" />
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            class="form-control"
+            ngModel
+            name="password"
+            id=""
+          />
+        </div>
 
-            <div class="col-md-6 mb-3">
-                <Label>Fname</Label>
-                <input type="text" class="form-control" ngModel name="first_name">
-            </div>
-            <div class="col-md-6 mb-3">
-                <label>Lname</label>
-                <input type="text" class="form-control" ngModel name="last_name" id="">
-            </div>
-            <div class="col-md-12 mb-3">
-                <label>Email</label>
-                <input type="email" class="form-control" ngModel name="email" id="">
-            </div>
-            <div class="row">
-            </div>
-            <div class="row">
-                <div >
-                    <label>Password</label>
-                    <input type="password" class="form-control" ngModel name="password" id="">
-                </div>
-                
-                
-                <div >
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control" ngModel name="" id="">
-                </div>
-            </div>
-            <div>
-                <input type="radio" id="p"  name="person" value="parent" >
-                <label >Parent</label>
-            </div>
-            <div>
-                <input type="radio" id="c"  name="person" value="child" >
-                <label >Child</label>
-            </div>
-            <div class="col-md-12 mb-3">
-                <label>Email</label>
-                <input type="email" class="form-control" ngModel name="parent_email" id="">
-            </div>
+        <div>
+          <label>Confirm Password</label>
+          <input type="password" class="form-control" ngModel name="" id="" />
+        </div>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="sp"
+          name="person"
+          value="parent"
+          (click)="mypfunct()"
+        />
+        <label>Parent</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="sc"
+          name="person"
+          value="child"
+          (click)="mycfunct()"
+        />
+        <label>Child</label>
+      </div>
+      <div class="col-md-12 mb-3" *ngIf="flag">
+        <label id="pe">Parent Email</label>
+        <input
+          type="email"
+          class="form-control"
+          ngModel
+          name="parent_email"
+          id="spe"
+        />
+      </div>
 
-            <!-- <div *ngFor="let l of list">
+      <!-- <div *ngFor="let l of list">
                 <input type="radio" id="{{l.id}}" name="person" value="l.v">
                 <label>{{l.name}}</label>
                 <div *ngIf="l.id=='c'">
@@ -52,15 +79,11 @@
                 </div>
             </div> -->
 
-            
-
-
-            <!-- <div *ngIf="" class="col-md-12 mb-3">
+      <!-- <div *ngIf="" class="col-md-12 mb-3">
                 <label>Parent's Email</label>
                 <input type="email" class="form-control"  ngModel name="email" id="">
             </div> -->
-        </div>
-        <button class="btn btn-primary">Create</button>
-    </form>
-
+    </div>
+    <button class="btn btn-primary">Create</button>
+  </form>
 </div>
