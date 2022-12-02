@@ -1,0 +1,16 @@
+.pr{
+    
+    font-size: larger;
+    padding-left: 10px;
+    padding: 20px;
+}
+
+.ex{
+    background-color: blue;
+}
+.kl{
+    position: fixed;
+}
+.lp{
+    padding-left: 50%;
+}

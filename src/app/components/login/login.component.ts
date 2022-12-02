@@ -4,6 +4,8 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { LoginService } from 'src/app/service/login.service';
+import { SignupComponent } from '../signup/signup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -20,11 +22,22 @@ export class LoginComponent implements OnInit {
   //   public auth: AuthService,
   //   @Inject(DOCUMENT) private doc: Document
   // ) {}
-  constructor(private login: LoginService, private router : Router){}
+  constructor(private dialog: MatDialog ,private login: LoginService, private router : Router){}
 
   res: any;
   ngOnInit() {}
 
+  openDialog() {
+    this.dialog.open(SignupComponent, {
+      width: '60%',
+    });
+  }
+  signup(row: any) {
+    this.dialog.open(SignupComponent, {
+      width: '40%',
+      data: row,
+    });
+  }
  // loginWithRedirect() {
    // this.auth.loginWithRedirect();
   //}
