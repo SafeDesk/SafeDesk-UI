@@ -73,6 +73,9 @@ export class LoginComponent implements OnInit {
       var child = this.login.childlogin(this.loginForm.value);
       child.then((x)=>{
         console.log(x.token)
+        localStorage.setItem('tokan_id', x.token );
+        sessionStorage.setItem('tokan_id',x.token);
+        this.router.navigateByUrl('dashboard');
       })
     }
     else{
