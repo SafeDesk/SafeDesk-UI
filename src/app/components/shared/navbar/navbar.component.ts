@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+// import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
@@ -13,7 +13,7 @@ showme:boolean = true
 
   constructor(
     private router : Router,
-    public auth: AuthService,
+    // public auth: AuthService,
     @Inject(DOCUMENT) private doc: Document
   ) {}
 
@@ -22,7 +22,7 @@ showme:boolean = true
     }
   ngOnInit(): void {
   }
-  
+
   loginWithRedirect() {
     this.auth.loginWithRedirect();
   }
@@ -34,5 +34,6 @@ showme:boolean = true
     sessionStorage.clear();
     this.router.navigateByUrl('loginlink');
   }
+
 
 }

@@ -14,9 +14,10 @@ export class TaskItemComponent implements OnInit {
   @Input() taskitem :any = {} 
   ngOnInit(): void {
      var progressList = JSON.parse(localStorage.getItem("progressList") || "[]");
+     console.log('ti item',this.taskitem)
      progressList.forEach((item)=>{
       if (item.taskName === this.taskitem.task_name){
-        console.log(item.taskName, this.taskitem.task_name);
+        console.log(item.taskName, this.taskitem.task_name, );
         // this.markCompleted();
         this.isChecked = true;
       }

@@ -11,10 +11,10 @@
   </div>
   <div class="card-body">
     <h1 class="card-title pricing-card-title">
-      100<small class="text-muted fw-light">&nbsp;pts</small>
+      {{taskitem.points}}<small class="text-muted fw-light">&nbsp;pts</small>
     </h1>
     <ul class="list-unstyled mt-3 mb-4">
-      <li>Category : Chores</li>
+      <li>Category : {{taskitem.category}}</li>
       <li>Topic : {{ taskitem.task_name }}</li>
       <li>Task Priority : {{ taskitem.task_priority }}</li>
       <li>Finish by: {{ taskitem.date_completed | date }}</li>

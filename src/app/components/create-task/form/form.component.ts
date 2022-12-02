@@ -32,6 +32,7 @@ export class FormComponent implements OnInit {
   token: string = '';
   ngOnInit(): void {
     this.token = this.msg.getToken();
+    console.log('print', this.token)
     this.listData = [];
     this.form = this.formBuilder.group({
       taskName: ['', Validators.required],
@@ -67,6 +68,7 @@ export class FormComponent implements OnInit {
 
       if (this.form.valid) {
         try {
+          console.log(this.token)
           await axios.post(
             'https://safedesk.herokuapp.com/api/v1/chores/',
             postData,

@@ -25,7 +25,7 @@ export class TasksComponent implements OnInit {
         { headers: { Authorization: `Bearer ${this.token}` } }
       );
       this.data = data;
-      console.log(typeof this.data);
+      console.log('here data',this.data);
     } catch (e) {
       console.log(e);
     }
@@ -36,6 +36,21 @@ export class TasksComponent implements OnInit {
     try {
       const { data } = await axios.get(
         'https://safedesk.herokuapp.com/api/v1/homework/',
+        { headers: { Authorization: `Bearer ${this.token}` } }
+      );
+      this.data = this.data.concat(data);
+      // console.log('inside mathhw',this.data);
+
+      console.log(typeof this.data);
+    } catch (e) {
+      console.log(e);
+    }
+    this.getVolData()
+  };
+  getVolData = async () => {
+    try {
+      const { data } = await axios.get(
+        'https://safedesk.herokuapp.com/api/v1/volunteer/',
         { headers: { Authorization: `Bearer ${this.token}` } }
       );
       this.data = this.data.concat(data);

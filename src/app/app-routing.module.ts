@@ -7,27 +7,16 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeworkComponent } from './components/homework/homework.component';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { SosComponent } from './components/sos/sos.component';
-import { AuthGuard } from './services/auth.guard';
+
+import { PhonenoComponent } from './components/phoneno/phoneno.component';
 const routes: Routes = [
-  { path: '',
-   component: ProjectsComponent,
-   canActivate:[AuthGuard] },
-  { path: 'dashboard', 
-  component: ProjectsComponent,
-  canActivate:[AuthGuard]
- },
-  { path: 'createChores', 
-  component: CreateTaskComponent,
-  canActivate:[AuthGuard] },
-  { path: 'homework', 
-  component: HomeworkComponent,
-  canActivate:[AuthGuard] 
-},
-  { path: 'volunteer', 
-  component: VolunteerComponent,
-  canActivate:[AuthGuard] },
-  { path: 'sos',
-   component: SosComponent },
+  { path: '', component: ProjectsComponent },
+  { path: 'dashboard', component: ProjectsComponent },
+  { path: 'createChores', component: CreateTaskComponent },
+  { path: 'homework', component: HomeworkComponent },
+  { path: 'volunteer', component: VolunteerComponent },
+  { path: 'sos', component: SosComponent },
+  {path: 'verifyphone', component: PhonenoComponent},
   {
     path: 'loginlink',
     component: LoginComponent,
