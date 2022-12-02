@@ -12,20 +12,25 @@
                 width: 90px;
                 margin-right: 50px;
             " (click)="loginWithRedirect()" *ngIf="(auth.isAuthenticated$ | async) == false">Log In</button> -->
-            <button class="btn btn-primary btn-block" style="
+            <button class="btn btn-primary btn-block"   style="
                 background: transparent;
                 width: 90px;
+                position: fixed;
                 margin-right: 50px;
-            "routerLink="loginlink"  >Log In</button>
+                right: 60px;
+            "routerLink="loginlink" (click)="hide()" *ngIf="showme" >Log In</button>
             </div>
                                   
             <div >
-              <!-- <button class="btn btn-primary btn-block" style="
+              <button class="btn btn-primary btn-block" style="
               background: transparent;
               width: 90px;
-              margin-right: 50px;
-          "(click)="logout()" *ngIf="(auth.isAuthenticated$ | async)">Log out</button> -->
-                                        
+             position: static;
+              margin-right: 50px;"
+              (click)="logout()"
+              
+              
+          >Log out</button>                           
           </div> 
 
         </div>                    

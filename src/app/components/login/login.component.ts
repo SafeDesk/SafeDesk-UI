@@ -71,6 +71,8 @@ export class LoginComponent implements OnInit {
           );
        console.log(item.token)
 
+       localStorage.setItem('tokan_id', item.token );
+       sessionStorage.setItem('tokan_id',item.token);
        this.router.navigateByUrl('dashboard');
      })
     }else if(cid == true){
@@ -83,9 +85,14 @@ export class LoginComponent implements OnInit {
     else{
       alert('Login Failed')
     }
+   
     
   
    
     // this.router.navigateByUrl('dashboard');
    }
-}
+//     isloggedin():boolean{
+//       //console.log('auth token' + );
+//      return localStorage.getItem("item.token")?true:false;
+//    }
+ }
