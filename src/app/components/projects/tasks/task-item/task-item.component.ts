@@ -4,6 +4,8 @@ import {MatDialog} from '@angular/material/dialog';
 // import { MatButton } from '@angular/material/button';
 import {TaskItemDescriptionComponent} from '../task-item-description/task-item-description.component'
 import { MessengerService } from 'src/app/services/messenger.service';
+import axios from 'axios';
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-task-item',
@@ -12,17 +14,13 @@ import { MessengerService } from 'src/app/services/messenger.service';
 })
 export class TaskItemComponent implements OnInit {
   @Input() taskitem :any = {} 
+  token!: string;
   ngOnInit(): void {
+    this.token = this.msg.getToken();
      var progressList = JSON.parse(localStorage.getItem("progressList") || "[]");
-     console.log('ti item',this.taskitem)
-     progressList.forEach((item)=>{
-      if (item.taskName === this.taskitem.task_name){
-        console.log(item.taskName, this.taskitem.task_name, );
-        // this.markCompleted();
-        this.isChecked = true;
-      }
-     })
-    // console.log(today)
+    console.log(this.taskitem);
+    this.isChecked = this.taskitem.status;
+
   }
   today: number = Date.now();
   isChecked = false;
@@ -36,10 +34,27 @@ export class TaskItemComponent implements OnInit {
     });
     
   }
-  markCompleted(){
+  async markCompleted(){
+    // console.log(this.taskitem);
     this.isChecked = true;
-    this.handleAddToProgress()
+    this.handleAddToProgress();
+    this.postmarkCompleted();
   }
+
+  async postmarkCompleted(){
+    console.log(this.taskitem);
+    let postData = {
+      "task_id": this.taskitem.id, 
+      "task_type": this.taskitem.category 
+    };
+    await axios.post(
+      'https://safedesk.herokuapp.com/api/v1/rewards/markcompleted',
+      postData,
+      { headers: { Authorization: `Bearer ${this.token}` } }
+    );
+
+  }
+  
 
   handleAddToProgress(){
     this.msg.sendMsg(this.taskitem);

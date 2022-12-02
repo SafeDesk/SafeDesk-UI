@@ -62,22 +62,36 @@ export class LoginComponent implements OnInit {
     console.log('parant' + '' +id)
     if(id == true){
       var parent = this.login.loginUser(this.loginForm.value);
-     // console.log('iamparent' );
+     
      
         parent.then((item)=>{
-          localStorage.setItem(
-            'userToken',
-            JSON.stringify(item.token)
-          );
-       console.log(item.token)
-
-       this.router.navigateByUrl('dashboard');
+          console.log('iamparent', item.status_code );
+          if(item.status_code === 401){
+            alert('The password and the email ID did not match..!!!! Kindly RECHECK!!!!')
+          }
+          else{
+            localStorage.setItem(
+                    'userToken',
+                    JSON.stringify(item.token)
+                  );
+                  this.router.navigateByUrl('/verifyphone');
+          }
      })
     }else if(cid == true){
       console.log('child log in works')
       var child = this.login.childlogin(this.loginForm.value);
       child.then((x)=>{
         console.log(x.token)
+        if(x.status_code === 401){
+          alert('The password and the email ID did not match..!!!! Kindly RECHECK!!!!')
+        }
+        else{
+          localStorage.setItem(
+                  'userToken',
+                  JSON.stringify(x.token)
+                );
+                this.router.navigateByUrl('/dashboard');
+        }
       })
     }
     else{
