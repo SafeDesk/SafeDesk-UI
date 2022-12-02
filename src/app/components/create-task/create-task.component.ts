@@ -34,10 +34,12 @@ export class CreateTaskComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
   token: String = '';
+  is_parent!: any;
   constructor(private dialog: MatDialog, private msg: MessengerService) {}
   ngOnInit(): void {
     this.token = this.msg.getToken();
-    console.log(this.token)
+    this.is_parent = this.msg.isParent();
+    console.log(this.token);
     this.getdata();
   }
 

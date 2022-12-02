@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-// import { MatDialog } from '@angular/material/dialog';
-// import { MatButton } from '@angular/material/button';
-import {TaskItemDescriptionComponent} from '../task-item-description/task-item-description.component'
+import { MatDialog } from '@angular/material/dialog';
+import { TaskItemDescriptionComponent } from '../task-item-description/task-item-description.component';
 import { MessengerService } from 'src/app/services/messenger.service';
 import axios from 'axios';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
@@ -10,10 +8,11 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
-  styleUrls: ['./task-item.component.css']
+  styleUrls: ['./task-item.component.css'],
 })
 export class TaskItemComponent implements OnInit {
-  @Input() taskitem :any = {} 
+  @Input() taskitem: any = {};
+  is_parent!: any;
   token!: string;
   ngOnInit(): void {
     this.token = this.msg.getToken();
@@ -24,16 +23,16 @@ export class TaskItemComponent implements OnInit {
   }
   today: number = Date.now();
   isChecked = false;
-  constructor(public dialog: MatDialog, private msg : MessengerService) {}
+  constructor(public dialog: MatDialog, private msg: MessengerService) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(TaskItemDescriptionComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
-    
   }
+
   async markCompleted(){
     // console.log(this.taskitem);
     this.isChecked = true;
@@ -59,7 +58,4 @@ export class TaskItemComponent implements OnInit {
   handleAddToProgress(){
     this.msg.sendMsg(this.taskitem);
   }
-
-  
 }
-

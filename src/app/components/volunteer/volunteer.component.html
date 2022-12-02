@@ -9,7 +9,12 @@
   </button>
   <span>Volunteer</span>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="primary" (click)="openDialog()">
+  <button
+    mat-raised-button
+    color="primary"
+    *ngIf="is_parent"
+    (click)="openDialog()"
+  >
     Add Task
   </button>
 </mat-toolbar>
@@ -60,11 +65,28 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button (click)="editChore(row)" color="primary">
+            <button
+              *ngIf="is_parent"
+              mat-icon-button
+              (click)="editChore(row)"
+              color="primary"
+            >
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="deleteChore(row.id)" color="warn">
+            <button
+              *ngIf="is_parent"
+              mat-icon-button
+              (click)="deleteChore(row.id)"
+              color="warn"
+            >
               <mat-icon>delete</mat-icon>
+            </button>
+            <button
+              *ngIf="!is_parent"
+              mat-button
+              class="w-100 btn btn-sm btn-outline-primary"
+            >
+              Mark Completed
             </button>
           </td>
         </ng-container>

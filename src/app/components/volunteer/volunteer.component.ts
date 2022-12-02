@@ -32,9 +32,11 @@ export class VolunteerComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
   token: string = '';
+  is_parent!: any;
   constructor(private dialog: MatDialog, private msg: MessengerService) {}
   ngOnInit(): void {
     this.token = this.msg.getToken();
+    this.is_parent = this.msg.isParent();
     this.getdata();
   }
 
