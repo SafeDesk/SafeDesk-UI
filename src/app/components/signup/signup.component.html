@@ -1,11 +1,113 @@
 <div class="container form-3">
   <p>Create Account</p>
 
-  <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
+ <!-- <form [formGroup]="registration" (ngSubmit)="regi(registration.value)" >
     <div class="row">
       <div class="col-md-6 mb-3">
         <Label>Fname</Label>
-        <input type="text" class="form-control" ngModel name="first_name" />
+        <input type="text" class="form-control" formControlName="first_name" />
+      <div class ="form-text text-danger" *ngIf="First_name.errors?.['required']&& First_name.touched">
+        First Name is required
+      </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Lname</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="last_name"
+          id=""
+        />
+        <div class ="form-text text-danger" *ngIf="Last_name.errors?.['required']&& Last_name.touched">
+          Last Name is required
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" formControlName="email" id="" />
+        <div class ="form-text text-danger" *ngIf="Email.errors?.['required']&& Email.touched">
+          Email is required
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="spwd"
+          />
+          <div class ="form-text text-danger" *ngIf="Password.errors?.['required']&& Password.touched">
+            Password is required
+          </div>
+        </div>
+
+        <div>
+          <label>Confirm Password</label>
+          <input type="password" id="cpwd" formControlName="confirmpassword" class="form-control"  />
+        <div class="form-text text-danger" [ngStyle]="{'display': ConfirmPassword}">
+         Confirm Password is Invalid
+        </div>
+        </div>
+        <div class ="form-text text-danger" *ngIf="ConfirmPassword.errors?.['required']&& ConfirmPassword.touched">
+          Confirm Password is required
+        </div>
+      </div>
+      <div class="col ps-3 mb-3">
+
+        <div>
+          <input
+          type="radio"
+          id="sp"
+          name="person"
+          value="parent"
+          (click)="mypfunct()"
+          required
+          />
+          <label>Parent</label>
+        </div>
+        <div>
+          <input
+          type="radio"
+          id="sc"
+          name="person"
+          value="child"
+          (click)="mycfunct()"
+          required
+          />
+          <label>Child</label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3" *ngIf="flag">
+        <label id="pe">Parent Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="parent_email"
+          id="spe"
+        />
+      </div>
+
+
+
+
+      
+    
+    </div>
+    <button class="btn btn-primary">Create</button>
+  </form>  -->
+ 
+
+
+
+<form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <Label>Fname</Label>
+        <input type="text"  class="form-control" ngModel name="first_name" />
+        
       </div>
       <div class="col-md-6 mb-3">
         <label>Lname</label>
@@ -30,13 +132,13 @@
             class="form-control"
             ngModel
             name="password"
-            id=""
+            id="spwd"
           />
         </div>
 
         <div>
           <label>Confirm Password</label>
-          <input type="password" class="form-control" ngModel name="" id="" />
+          <input type="password" id="cpwd" class="form-control" validation.mat  />
         </div>
       </div>
       <div>
@@ -68,22 +170,10 @@
           name="parent_email"
           id="spe"
         />
-      </div>
-
-      <!-- <div *ngFor="let l of list">
-                <input type="radio" id="{{l.id}}" name="person" value="l.v">
-                <label>{{l.name}}</label>
-                <div *ngIf="l.id=='c'">
-                    <label>Parent's Email</label>
-                    <input type="email" class="form-control"  ngModel name="email" id="">
-                </div>
-            </div> -->
-
-      <!-- <div *ngIf="" class="col-md-12 mb-3">
-                <label>Parent's Email</label>
-                <input type="email" class="form-control"  ngModel name="email" id="">
-            </div> -->
+      </div>  
+    
     </div>
     <button class="btn btn-primary">Create</button>
-  </form>
+  </form>  
+
 </div>

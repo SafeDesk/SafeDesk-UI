@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/service/login.service';
+
+
+
 
 @Component({
   selector: 'app-signup',
@@ -11,30 +15,41 @@ export class SignupComponent implements OnInit {
   list = [
     {
       name: 'Parent',
-      id: 'p',
+      id: 'sp',
       v: 'parent',
     },
     {
       name: 'Child',
-      id: 'c',
+      id: 'sc',
       v: 'child',
     },
   ];
 
-  constructor(private userData: LoginService) {}
+confirmpassword:string ='none';
+
+  constructor(private userData: LoginService) {
+
+  }
+
   getUserFormData(data: any) {
-    let id = (<HTMLInputElement>document.getElementById('sp')).checked;
-    // this.flag = true;
-    console.log(id);
-    if (id == true) {
-      console.log(data);
-      this.userData.createparent(data).subscribe((result) => {
-        console.warn(result);
-      });
-    } else {
-      // this.userData.createchild(data).subscribe((r)=>{
-      // console.warn(r)
-      // })
+    let CPWD = (<HTMLInputElement>document.getElementById('cpwd')).value;
+    let SPWD = (<HTMLInputElement>document.getElementById('spwd')).value;
+    if (CPWD == SPWD) {
+
+      let id = (<HTMLInputElement>document.getElementById('sp')).checked;
+
+      // this.flag = true;
+      console.log(id);
+      if (id == true) {
+        console.log(data);
+        this.userData.createparent(data).subscribe((result) => {
+          console.warn(result);
+        });
+      } else {
+        this.userData.createchild(data).subscribe((r) => {
+          console.warn(r)
+        })
+      }
     }
   }
   mypfunct() {
@@ -56,5 +71,59 @@ export class SignupComponent implements OnInit {
       this.flag = true;
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+
+  //  registration = new FormGroup({
+  //    first_name: new FormControl("" , [Validators.required]),
+  //    last_name: new FormControl("", [Validators.required]),
+  //    email: new FormControl("", [Validators.required]),
+  //    password: new FormControl("", [Validators.required]),
+  //    confirmpassword: new FormControl("", [Validators.required])
+ 
+  //  });
+  //  regi(data: any){
+  //   if(this.Password.value == this.ConfirmPassword){
+  //     console.log("submited");
+  //     let CPWD = (<HTMLInputElement>document.getElementById('cpwd')).value;
+  //   let SPWD = (<HTMLInputElement>document.getElementById('spwd')).value;
+  //   if (CPWD == SPWD) {
+
+  //     let id = (<HTMLInputElement>document.getElementById('sp')).checked;
+
+  //     // this.flag = true;
+  //     console.log(id);
+  //     if (id == true) {
+  //       console.log(data);
+  //       this.userData.createparent(data).subscribe((result) => {
+  //         console.warn(result);
+  //       });
+  //     } else {
+  //       this.userData.createchild(data).subscribe((r) => {
+  //         console.warn(r)
+  //       })
+  //     }
+  //   }
+      
+
+  //   }else{
+  //     this.confirmpassword='inline'
+  //   }
+  //  }
+  //  get First_name(): FormControl{
+  //   return this.registration.get("first_name") as FormControl;
+  //  }
+  //  get Last_name(): FormControl{
+  //   return this.registration.get("last_name") as FormControl;
+  //  }
+  //  get Email(): FormControl{
+  //   return this.registration.get("email") as FormControl;
+  //  }
+  //  get Password(): FormControl{
+  //   return this.registration.get("password") as FormControl;
+  //  }
+   
+  //  get ConfirmPassword(): FormControl{
+  //   return this.registration.get("confirmpassword") as FormControl;
+  //  }
 }
