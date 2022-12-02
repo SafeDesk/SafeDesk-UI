@@ -39,5 +39,9 @@ url="https://safedesk.herokuapp.com/";
   createchild(cdata : any){
     return this.myhttp.post(this.url + 'api/v1/child/signup',cdata);
   }
+  isloggedin():boolean{
+    // console.log('auth token' + token);
+         return localStorage.getItem("tokan_id")?true:false;
+      }
 }
 
