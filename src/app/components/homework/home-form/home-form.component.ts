@@ -74,11 +74,11 @@ export class HomeFormComponent implements OnInit {
           );
           this.task.getdata();
           this.form.reset();
-          Swal.fire('Chores added successfully').then(function () {
+          Swal.fire('Homework added successfully').then(function () {
             window.location.reload();
           });
         } catch (err) {
-          alert('Could not add chores');
+          alert('Could not add homework');
         }
       }
     } else {
@@ -97,7 +97,7 @@ export class HomeFormComponent implements OnInit {
           headers: { Authorization: `Bearer ${this.token}` },
         }
       );
-      Swal.fire('Chores updated successfully').then(function () {
+      Swal.fire('Homework updated successfully').then(function () {
         window.location.reload();
       });
     }
