@@ -37,6 +37,7 @@ export class CreateTaskComponent implements OnInit {
   constructor(private dialog: MatDialog, private msg: MessengerService) {}
   ngOnInit(): void {
     this.token = this.msg.getToken();
+    console.log(this.token)
     this.getdata();
   }
 

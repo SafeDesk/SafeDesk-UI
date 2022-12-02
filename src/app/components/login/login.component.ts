@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '@auth0/auth0-angular';
+// import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { LoginService } from 'src/app/service/login.service';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 
 
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   //   public auth: AuthService,
   //   @Inject(DOCUMENT) private doc: Document
   // ) {}
-  constructor(private login: LoginService, private router : Router){}
+  constructor(private login: LoginService, private router : Router, private msg: MessengerService){}
 
   res: any;
   ngOnInit() {}
@@ -62,8 +63,14 @@ export class LoginComponent implements OnInit {
     if(id == true){
       var parent = this.login.loginUser(this.loginForm.value);
      // console.log('iamparent' );
-     parent.then((item)=>{
+     
+        parent.then((item)=>{
+          localStorage.setItem(
+            'userToken',
+            JSON.stringify(item.token)
+          );
        console.log(item.token)
+
        this.router.navigateByUrl('dashboard');
      })
     }else if(cid == true){

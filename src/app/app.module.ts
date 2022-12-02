@@ -34,7 +34,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { AuthModule } from '@auth0/auth0-angular';
+// import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from 'src/environments/environment';
 import { HomeworkComponent } from './components/homework/homework.component';
 import { HomeFormComponent } from './components/homework/home-form/home-form.component';
@@ -42,8 +42,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { VolFormComponent } from './components/volunteer/vol-form/vol-form.component';
 import { SosComponent } from './components/sos/sos.component';
-
-
+import { PhonenoComponent } from './components/phoneno/phoneno.component';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+// import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { NgOtpInputModule } from  'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -68,6 +73,7 @@ import { SosComponent } from './components/sos/sos.component';
     VolunteerComponent,
     VolFormComponent,
     SosComponent,
+    PhonenoComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,10 +96,14 @@ import { SosComponent } from './components/sos/sos.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    AuthModule.forRoot({
-      ... env.auth,
-    }),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(env.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    NgOtpInputModule
+   
+
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],

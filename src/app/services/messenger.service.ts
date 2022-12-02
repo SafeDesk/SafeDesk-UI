@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 })
 export class MessengerService {
   subject = new Subject();
+  token: string = ""
   constructor() {}
 
   sendMsg(task) {
@@ -17,6 +18,7 @@ export class MessengerService {
   }
 
   getToken() {
-    return 'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNhYml0aGEyM0BnbWFpbC5jb20iLCJwYXJlbnRfaWQiOiIzOTE5MjcyZC03MWNiLTRjYTYtOTNiOC01ZGVkNzljYWYyYzAiLCJleHBpcnlfdGltZSI6IjIwMjItMTItMDIgMjI6MDY6MDIgKzAwMDAiLCJpc0NoaWxkIjp0cnVlfQ.gb9mXCe9R3VMwDyNsCKUq2n3GfPoThDBIfx08n9hrU8';
+    this.token = JSON.parse(localStorage.getItem('userToken') || '' )
+    return this.token;
   }
 }

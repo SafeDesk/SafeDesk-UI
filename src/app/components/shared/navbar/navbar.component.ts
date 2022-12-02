@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+// import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router : Router,
-    public auth: AuthService,
+    // public auth: AuthService,
     @Inject(DOCUMENT) private doc: Document
   ) {}
 
@@ -20,12 +20,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginWithRedirect() {
-    this.auth.loginWithRedirect();
-  }
+  // loginWithRedirect() {
+  //   this.auth.loginWithRedirect();
+  // }
   
-  logout(){
-    this.auth.logout({returnTo : this.doc.location.origin})
-  }
+  // logout(){
+  //   this.auth.logout({returnTo : this.doc.location.origin})
+  // }
 
 }
