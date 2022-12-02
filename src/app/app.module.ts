@@ -43,12 +43,12 @@ import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { VolFormComponent } from './components/volunteer/vol-form/vol-form.component';
 import { SosComponent } from './components/sos/sos.component';
 import { PhonenoComponent } from './components/phoneno/phoneno.component';
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 // import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { NgOtpInputModule } from  'ng-otp-input';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -101,9 +101,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    NgOtpInputModule
-   
-
+    NgOtpInputModule,
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],
