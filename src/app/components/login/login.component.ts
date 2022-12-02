@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
      // console.log('iamparent' );
      parent.then((item)=>{
        console.log(item.token)
+       localStorage.setItem('tokan_id', item.token );
+       
        this.router.navigateByUrl('dashboard');
      })
     }else if(cid == true){

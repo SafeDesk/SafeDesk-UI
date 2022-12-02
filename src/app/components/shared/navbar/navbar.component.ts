@@ -9,6 +9,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+showme:boolean = true
 
   constructor(
     private router : Router,
@@ -16,16 +17,21 @@ export class NavbarComponent implements OnInit {
     @Inject(DOCUMENT) private doc: Document
   ) {}
 
-
+    hide(){
+      this.showme=!this.showme
+    }
   ngOnInit(): void {
   }
-
+  
   loginWithRedirect() {
     this.auth.loginWithRedirect();
   }
   
   logout(){
-    this.auth.logout({returnTo : this.doc.location.origin})
+    //this.auth.logout({returnTo : this.doc.location.origin})
+    
+    localStorage.removeItem('token_id')
+    this.router.navigateByUrl('loginlink');
   }
 
 }
