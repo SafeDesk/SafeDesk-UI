@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   loginWithRedirect() {
     this.auth.loginWithRedirect();
   }
-
+  
   logout(){
     this.auth.logout({returnTo : this.doc.location.origin})
   }
