@@ -30,7 +30,8 @@ showme:boolean = true
   logout(){
     //this.auth.logout({returnTo : this.doc.location.origin})
     
-    localStorage.removeItem('token_id')
+    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigateByUrl('loginlink');
   }
 
