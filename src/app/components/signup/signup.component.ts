@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
   constructor(private userData:LoginService) {
    }
   getUserFormData(data:any){
-    let id =(<HTMLInputElement>document.getElementById('p')).checked
+    let id =(<HTMLInputElement>document.getElementById('sp')).checked
     console.log(id);
      if(id == true){
        console.log(data)
