@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormComponent } from './form/form.component';
+import { VolFormComponent } from './vol-form/vol-form.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -8,21 +8,19 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { MessengerService } from 'src/app/services/messenger.service';
-import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 @Component({
-  selector: 'app-create-task',
-  templateUrl: './create-task.component.html',
-  styleUrls: ['./create-task.component.css'],
+  selector: 'app-volunteer',
+  templateUrl: './volunteer.component.html',
+  styleUrls: ['./volunteer.component.css'],
 })
-export class CreateTaskComponent implements OnInit {
+export class VolunteerComponent implements OnInit {
   displayedColumns: string[] = [
     'task_name',
     'points',
-    'task_priority',
     'date_completed',
     'description',
     'action',
@@ -33,7 +31,7 @@ export class CreateTaskComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable)
   table!: MatTable<any>;
-  token: String = '';
+  token: string = '';
   constructor(private dialog: MatDialog, private msg: MessengerService) {}
   ngOnInit(): void {
     this.token = this.msg.getToken();
@@ -41,7 +39,7 @@ export class CreateTaskComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(FormComponent, {
+    this.dialog.open(VolFormComponent, {
       width: '40%',
     });
   }
@@ -49,8 +47,10 @@ export class CreateTaskComponent implements OnInit {
   getdata = async () => {
     try {
       const { data } = await axios.get(
-        'https://safedesk.herokuapp.com/api/v1/chores/',
-        { headers: { Authorization: `Bearer ${this.token}` } }
+        'https://safedesk.herokuapp.com/api/v1/volunteer/',
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
       );
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
@@ -61,7 +61,7 @@ export class CreateTaskComponent implements OnInit {
   };
 
   editChore(row: any) {
-    this.dialog.open(FormComponent, {
+    this.dialog.open(VolFormComponent, {
       width: '40%',
       data: row,
     });
@@ -83,7 +83,7 @@ export class CreateTaskComponent implements OnInit {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.delete(
-          `https://safedesk.herokuapp.com/api/v1/chores/${rid}`,
+          `https://safedesk.herokuapp.com/api/v1/volunteer/${rid}`,
           {
             headers: { Authorization: `Bearer ${this.token}` },
           }

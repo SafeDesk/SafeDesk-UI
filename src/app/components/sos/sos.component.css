@@ -1,0 +1,26 @@
+.container {
+  display: block;
+  text-align: center;
+  margin-top: 12%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container img {
+  height: 20rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container img:hover {
+  text-shadow: 1rem black;
+  height: 20rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inner {
+  color: green;
+  margin-top: 2rem;
+  font-size: 1.8rem;
+}

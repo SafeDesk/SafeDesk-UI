@@ -5,20 +5,20 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { HomeworkComponent } from '../homework.component';
+import { VolunteerComponent } from '../volunteer.component';
 import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
-  selector: 'app-home-form',
-  templateUrl: './home-form.component.html',
-  styleUrls: ['./home-form.component.css'],
+  selector: 'app-vol-form',
+  templateUrl: './vol-form.component.html',
+  styleUrls: ['./vol-form.component.css'],
 })
-export class HomeFormComponent implements OnInit {
+export class VolFormComponent implements OnInit {
   minDate: Date;
 
   constructor(
     private formBuilder: FormBuilder,
-    private task: HomeworkComponent,
+    private task: VolunteerComponent,
     private msg: MessengerService,
     @Inject(MAT_DIALOG_DATA) public editData: any
   ) {
@@ -36,7 +36,6 @@ export class HomeFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       taskName: ['', Validators.required],
       points: ['', Validators.required],
-      taskPriority: ['', Validators.required],
       date: ['', Validators.required],
       description: ['', Validators.required],
     });
@@ -45,14 +44,11 @@ export class HomeFormComponent implements OnInit {
       this.actionBtn = 'Update';
       this.form.controls['taskName'].setValue(this.editData.task_name);
       this.form.controls['points'].setValue(this.editData.points);
-      this.form.controls['taskPriority'].setValue(
-        this.editData.task_priority.toString()
-      );
       this.form.controls['date'].setValue(this.editData.date_completed);
       this.form.controls['description'].setValue(this.editData.description);
     }
   }
-  async addHomework() {
+  async addChore() {
     if (!this.editData) {
       let data = this.form.value;
       let date = data.date;
@@ -68,17 +64,17 @@ export class HomeFormComponent implements OnInit {
       if (this.form.valid) {
         try {
           await axios.post(
-            'https://safedesk.herokuapp.com/api/v1/homework/',
+            'https://safedesk.herokuapp.com/api/v1/volunteer/',
             postData,
             { headers: { Authorization: `Bearer ${this.token}` } }
           );
           this.task.getdata();
           this.form.reset();
-          Swal.fire('Chores added successfully').then(function () {
+          Swal.fire('Volunteer added successfully').then(function () {
             window.location.reload();
           });
         } catch (err) {
-          alert('Could not add chores');
+          alert('Could not add task');
         }
       }
     } else {
@@ -91,13 +87,11 @@ export class HomeFormComponent implements OnInit {
         date_completed: data.date,
       };
       await axios.put(
-        `https://safedesk.herokuapp.com/api/v1/homework/${this.editData.id}`,
+        `https://safedesk.herokuapp.com/api/v1/volunteer/${this.editData.id}`,
         putData,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
+        { headers: { Authorization: `Bearer ${this.token}` } }
       );
-      Swal.fire('Chores updated successfully').then(function () {
+      Swal.fire('Volunteer updated successfully').then(function () {
         window.location.reload();
       });
     }
