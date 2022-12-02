@@ -38,9 +38,11 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from 'src/environments/environment';
 import { HomeworkComponent } from './components/homework/homework.component';
 import { HomeFormComponent } from './components/homework/home-form/home-form.component';
+import { HttpClientModule } from '@angular/common/http';
 import { VolunteerComponent } from './components/volunteer/volunteer.component';
 import { VolFormComponent } from './components/volunteer/vol-form/vol-form.component';
 import { SosComponent } from './components/sos/sos.component';
+
 
 
 @NgModule({
@@ -90,7 +92,8 @@ import { SosComponent } from './components/sos/sos.component';
     MatSortModule,
     AuthModule.forRoot({
       ... env.auth,
-    })
+    }),
+    HttpClientModule
   ],
   entryComponents: [TaskItemDescriptionComponent],
   providers: [],

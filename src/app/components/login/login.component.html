@@ -1,13 +1,13 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-6 offset-3">
         <div class="d-grid">
-            <button class="btn btn-primary" (click)="loginWithRedirect">Log In</button>
+            <button class="btn btn-primary" (click)="loginSubmited">Log In</button>
                                       
         </div>                        
     </div>                    
-</div>
+</div> -->
 
-<!-- <div class="abc">
+<div class="abc">
     <div class="container form ">
         <div class="f">
             <form class="border p-3 rounded-3" [formGroup]="loginForm" (ngSubmit)="loginSubmited()">
@@ -35,10 +35,21 @@
                             *ngIf="PWD.errors?.['required']&&(Email.dirty||Email.touched)">Password is required</div>
                     </div>
                 </div>
+
+                    <div>
+                        <input type="radio" id="p" name="person" value="parent" >
+                        <label >Parent</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="c" name="person" value="child" >
+                        <label >Child</label>
+                    </div>
+           
+                    
                 <div class="row">
                     <div class="col-6 offset-3">
                         <div class="d-grid">
-                            <button class="btn btn-primary" (click)="loginWithRedirect">Log In</button>
+                            <button class="btn btn-primary" (click)="loginSubmited">Log In</button>
                                                       
                         </div>                        
                     </div>                    
@@ -52,4 +63,4 @@
             </div>
         </div>
     </div>
-</div> -->
+</div> 
